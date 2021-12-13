@@ -22,7 +22,7 @@ pub_left = rospy.Publisher('Yolo_Sub_Pub_Left', Image, queue_size=-1)
 pub_right = rospy.Publisher('Yolo_Sub_Pub_Right', Image, queue_size=-1)
 bridge = CvBridge()  
 
-@jit
+# @jit
 def image_processing_left(cv_img):
            
     yolo_output = Yolo.Yolo_imp(cv_img)
@@ -30,7 +30,7 @@ def image_processing_left(cv_img):
     left_output = bridge.cv2_to_imgmsg(yolo_output)
     pub_left.publish(left_output)
     
-@jit
+# @jit
 def image_processing_right(cv_img):
     
     yolo_output = Yolo.Yolo_imp(cv_img)
