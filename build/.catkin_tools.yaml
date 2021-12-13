@@ -1,0 +1,6 @@
+devel_space: /home/avhi/Desktop/ROS_Yolo/devel
+install: false
+install_space: /home/avhi/Desktop/ROS_Yolo/install
+profile: default
+source_space: /home/avhi/Desktop/ROS_Yolo/src
+workspace: /home/avhi/Desktop/ROS_Yolo

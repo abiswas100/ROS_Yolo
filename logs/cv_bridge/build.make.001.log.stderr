@@ -1,0 +1,20 @@
+make[2]: *** No rule to make target '/usr/lib/aarch64-linux-gnu/libpython3.6.5m.so', needed by '/home/avhi/Desktop/ROS_Yolo/devel/.private/cv_bridge/lib/python3/dist-packages/cv_bridge/boost/cv_bridge_boost.so'.  Stop.
+make[2]: *** Waiting for unfinished jobs....
+In file included from [01m[K/usr/include/boost/python/detail/prefix.hpp:13:0[m[K,
+                 from [01m[K/usr/include/boost/python/args.hpp:8[m[K,
+                 from [01m[K/usr/include/boost/python.hpp:11[m[K,
+                 from [01m[K/home/avhi/Desktop/ROS_Yolo/src/vision_opencv/cv_bridge/src/module.hpp:21[m[K,
+                 from [01m[K/home/avhi/Desktop/ROS_Yolo/src/vision_opencv/cv_bridge/src/module_opencv3.cpp:3[m[K:
+[01m[K/usr/include/boost/python/detail/wrap_python.hpp:50:23:[m[K [01;31m[Kfatal error: [m[Kpyconfig.h: No such file or directory
+compilation terminated.
+In file included from [01m[K/usr/include/boost/python/detail/prefix.hpp:13:0[m[K,
+                 from [01m[K/usr/include/boost/python/args.hpp:8[m[K,
+                 from [01m[K/usr/include/boost/python.hpp:11[m[K,
+                 from [01m[K/home/avhi/Desktop/ROS_Yolo/src/vision_opencv/cv_bridge/src/module.hpp:21[m[K,
+                 from [01m[K/home/avhi/Desktop/ROS_Yolo/src/vision_opencv/cv_bridge/src/module.cpp:35[m[K:
+[01m[K/usr/include/boost/python/detail/wrap_python.hpp:50:23:[m[K [01;31m[Kfatal error: [m[Kpyconfig.h: No such file or directory
+compilation terminated.
+make[2]: *** [src/CMakeFiles/cv_bridge_boost.dir/module_opencv3.cpp.o] Error 1
+make[2]: *** [src/CMakeFiles/cv_bridge_boost.dir/module.cpp.o] Error 1
+make[1]: *** [src/CMakeFiles/cv_bridge_boost.dir/all] Error 2
+make: *** [all] Error 2
