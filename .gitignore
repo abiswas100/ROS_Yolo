@@ -1,0 +1,13 @@
+*.jpg
+*.jpeg
+*.weights
+*.h5
+*.pyc
+*.xml
+*.mp4
+*.DS_Store
+*.bak
+*.bag
+bagpy_imp/camera.bag
+bagpy_imp/camera_left_human.bag
+Yolo_imp/yolov3.weights
