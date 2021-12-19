@@ -2,6 +2,9 @@ from numba import jit, cuda
 from posix import listdir
 import rospy
 from sensor_msgs.msg import Image
+from sensor_msgs.msg import LaserScan
+from sensor_msgs.msg import PointCloud2 as pc2
+import pcl
 try:
     import cv2
 except ImportError:
@@ -52,11 +55,17 @@ def image_callback_right(msg: Image):
     # right = threading.Thread(target=image_processing_right(cv_img))
     # right.start()
     # right.join()
+    
+def point_cloud_callback(msg:pc2): 
+    # rospy.loginfo(msg)
+    pass
+    
 
 def main():
 
-    rospy.Subscriber("/multisense_sl/camera/camera_front/left/camera_front/image_raw", Image, image_callback_left, queue_size=-1)
-    rospy.Subscriber("/multisense_sl/camera/camera_front/left/camera_front/image_raw", Image, image_callback_right, queue_size=-1)
+    # rospy.Subscriber("/multisense_sl/camera/camera_front/left/camera_front/image_raw", Image, image_callback_left, queue_size=-1)
+    # rospy.Subscriber("/multisense_sl/camera/camera_front/left/camera_front/image_raw", Image, image_callback_right, queue_size=-1)
+    rospy.Subscriber("/velodyne_points",pc2,point_cloud_callback,queue_size=1)
     while not rospy.is_shutdown():
         rospy.spin()   
 
