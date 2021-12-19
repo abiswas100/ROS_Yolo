@@ -58,6 +58,7 @@ def image_callback_right(msg: Image):
     
 def point_cloud_callback(msg:pc2): 
     # rospy.loginfo(msg)
+    print(msg.width)
     pass
     
 
