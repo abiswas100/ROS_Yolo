@@ -2,9 +2,9 @@ from numba import jit, cuda
 from posix import listdir
 import rospy
 from sensor_msgs.msg import Image
-from sensor_msgs.msg import LaserScan
 from sensor_msgs.msg import PointCloud2 as pc2
-import pcl
+import sensor_msgs.point_cloud2
+import pcl as pc
 try:
     import cv2
 except ImportError:
@@ -58,15 +58,35 @@ def image_callback_right(msg: Image):
     
 def point_cloud_callback(msg:pc2): 
     # rospy.loginfo(msg)
-    print(msg.width)
-    pass
+    # print("here")
+    
+    # print(msg.fields)
+    # print(msg._full_text)
+    # n = msg.fields
+    # for i in n:print(i,type(i))
+    # araay = i.
+    
+    # data = []
+    # data_set = []
+    # for i in msg.fields:
+    #     data.append(i)
+    #     for j in data:
+    #         print(type(j))
+    #         data_set.append(j)
+    #         print('-------------------------------------------')
+    for point in sensor_msgs.point_cloud2.read_points(msg, skip_nans=True):
+            # print(type(point))        
+            pt_x = point[0]
+            pt_y = point[1]
+            pt_z = point[2]   
+            print([pt_x,pt_y,pt_z])
     
 
 def main():
 
     # rospy.Subscriber("/multisense_sl/camera/camera_front/left/camera_front/image_raw", Image, image_callback_left, queue_size=-1)
     # rospy.Subscriber("/multisense_sl/camera/camera_front/left/camera_front/image_raw", Image, image_callback_right, queue_size=-1)
-    rospy.Subscriber("/velodyne_points",pc2,point_cloud_callback,queue_size=1)
+    rospy.Subscriber("/top/velodyne_points2",pc2,point_cloud_callback,queue_size=1)
     while not rospy.is_shutdown():
         rospy.spin()   
 
