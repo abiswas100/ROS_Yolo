@@ -74,18 +74,24 @@ def point_cloud_callback(msg:pc2):
     #         print(type(j))
     #         data_set.append(j)
     #         print('-------------------------------------------')
+    points_list = []
     for point in sensor_msgs.point_cloud2.read_points(msg, skip_nans=True):
-            # print(type(point))        
+            # print(point)        
             pt_x = point[0]
             pt_y = point[1]
             pt_z = point[2]   
-            print([pt_x,pt_y,pt_z])
-    
+            # print([pt_x,pt_y,pt_z])
+            points_list.append([point[0],point[1],point[2],point[3]])
+            
+    pcl_data = pc.PointCloud_PointXYZRGB()
+    pcl_data.from_list(points_list)
+            
+    print(points_list)
 
 def main():
 
-    # rospy.Subscriber("/multisense_sl/camera/camera_front/left/camera_front/image_raw", Image, image_callback_left, queue_size=-1)
-    # rospy.Subscriber("/multisense_sl/camera/camera_front/left/camera_front/image_raw", Image, image_callback_right, queue_size=-1)
+    rospy.Subscriber("/multisense_sl/camera/camera_front/left/camera_front/image_raw", Image, image_callback_left, queue_size=-1)
+    rospy.Subscriber("/multisense_sl/camera/camera_front/left/camera_front/image_raw", Image, image_callback_right, queue_size=-1)
     rospy.Subscriber("/top/velodyne_points2",pc2,point_cloud_callback,queue_size=1)
     while not rospy.is_shutdown():
         rospy.spin()   
