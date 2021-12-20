@@ -24,6 +24,7 @@ source activate Yolo
 
 ### Run detection 
 ```python
+cd Yolo_imp
 python sub_pub.py
 ```
 
