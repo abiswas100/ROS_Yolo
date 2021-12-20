@@ -21,6 +21,9 @@ conda env create --file yolo.yml
 ```python
 source activate Yolo
 ```
+### Download data files
+https://drive.google.com/drive/folders/1zdnSN7g3sa3L-p7G1NcWJhx-I2QEE7Pa?usp=sharing
+###### Copy the files inside Yolo_imp
 
 ### Run detection 
 ```python
