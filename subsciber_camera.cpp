@@ -1,5 +1,6 @@
-#include "ros/ros.h"
-#include "std_msgs/String.h"
+#include <ros/ros.h>
+#include <std_msgs/String.h>
+// #include "std_msgs/ImZZ
 
 void chatterCallback(const std_msgs::String::ConstPtr& msg)
 {
@@ -13,4 +14,4 @@ int main(int argc, char **argv)
 
 ros::NodeHandle n;
 
-ros::Subscriber sub = n.subscribe("chatter",1000,chatterCallback);
+ros::Subscriber sub = n.subscribe("/multisense_sl/camera/camera_front/left/camera_front/image_raw",1000,chatterCallback);
