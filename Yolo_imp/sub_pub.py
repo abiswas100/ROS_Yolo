@@ -3,6 +3,7 @@ from posix import listdir
 import rospy
 from sensor_msgs.msg import Image
 from sensor_msgs.msg import PointCloud2 as pc2
+from sensor_msgs.msg import LaserScan
 import sensor_msgs.point_cloud2
 import pcl as pc
 import matplotlib.pyplot as plt
@@ -61,7 +62,7 @@ def point_cloud_callback(msg:pc2):
     # fig = plt.figure()
     # ax = fig.add_subplot(projection='3d')
     # rospy.loginfo(msg)
-    print("here")
+    # print("here")
     
     # print(msg.fields)
     # print(msg._full_text)
@@ -83,12 +84,18 @@ def point_cloud_callback(msg:pc2):
             pt_x = point[0]
             pt_y = point[1]
             pt_z = point[2]   
-            print([pt_x,pt_y,pt_z])
+            # print([pt_x,pt_y,pt_z])
+            pt_i = point
+            # print(pt_i)
             points_list.append([point[0],point[1],point[2],point[3]])
             # ax.plot_surface(point[0],point[1],point[2])
             # ax.show()
     pcl_data = pc.PointCloud_PointXYZRGB()
     pcl_data.from_list(points_list)
+    
+def laserscan_callback(msg:LaserScan):
+    rospy.loginfo(msg)
+    pass
             
  
 
@@ -97,6 +104,7 @@ def main():
     # rospy.Subscriber("/multisense_sl/camera/camera_front/left/camera_front/image_raw", Image, image_callback_left, queue_size=-1)
     # rospy.Subscriber("/multisense_sl/camera/camera_front/left/camera_front/image_raw", Image, image_callback_right, queue_size=-1)
     rospy.Subscriber("/velodyne_points",pc2,point_cloud_callback,queue_size=1)
+    rospy.Subscriber("/pcl_laserscan", LaserScan, laserscan_callback, queue_size=10)
     while not rospy.is_shutdown():
         rospy.spin()   
 
