@@ -95,6 +95,7 @@ def point_cloud_callback(msg:pc2):
     
 def laserscan_callback(msg:LaserScan):
     rospy.loginfo(msg)
+    
     pass
             
  
